@@ -8,10 +8,12 @@ header {
 
 header > img {
     max-height: 280px;
-    margin: -45px;
+    margin: -55px;
 }
 
 header > div {
+    margin-top: 5px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -38,7 +40,7 @@ header > div > a {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    min-height: 74vh;
     align-items: center;
     width: 100%;
 }
@@ -49,8 +51,7 @@ main {
     width: 100%;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    margin-top: 30px;
+    flex-direction: column-reverse;
 }
 
 .containerpesquisahome > form {
@@ -69,13 +70,15 @@ main {
 }
 
 
+
+
 .grupolista{
     width: 100%;
     min-height: 70px;
     background-color: #294858;
     margin-top: 15px;
     margin-bottom: 15px;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     align-items: center;
     padding-left: 15px;
@@ -105,6 +108,11 @@ main {
     font-size: 26px;
 }
 
+.grupolista  > :first-child > span {
+    color: white;
+    font-size: 26px;
+}
+
 
 .grupolista > :nth-child(2n) > span {
         font-size: 16px;
@@ -117,4 +125,1167 @@ main {
 .grupolista > :last-child > a {
         font-size: 16px;
         color: white;
+}
+
+
+@font-face {
+    font-family: Calendar;
+    src: url(CalendarPlus.woff);
+  }
+
+.logo {
+
+    max-height: 80px;
+}
+
+.navbar {
+    background-color: #1c1b1f;
+
+}
+
+.container {
+    padding: 0px !important;
+    margin: 0px !important;
+    max-width: none !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.modal-header>div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.formlogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formlogin>button {
+    width: 35%;
+}
+
+.formlogin>div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.formlogin>div:last-child>button {
+    width: 30%;
+}
+
+.navbar-brand>span {
+    color: #d39847 !important;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url('../img/iconmenu.png') !important;
+}
+
+
+.navbar-toggler:focus {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* css para multi itens */
+
+
+.item{
+    min-height: 200px;
+    min-width: 175px;
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    transform: translate( var(--posicao), 0);
+    transition-duration: 1s;
+    border: 2px solid #8c9ca4;
+    justify-content: center;
+    align-items: center;
+    transition-property: transform;
+}
+
+
+.item2{
+    min-height: 200px;
+    min-width: 175px;
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    transform: translate( var(--posicao), 0);
+    transition-duration: 1s;
+    border: 2px solid #8c9ca4;
+    justify-content: center;
+    align-items: center;
+    transition-property: transform;
+}
+
+
+
+
+.item > img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.item > span{
+    color: #8c9ca4;
+    font-size: 16px;
+}
+
+.item > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+}
+
+.item > div > span {
+    font-size: 14px;
+    color: #8c9ca4;
+    text-decoration: underline 2px #8c9ca4;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    
+}
+
+.ContainerLivros{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+.titulo_livros{
+    font-family: Calendar;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 11px;
+    font-weight: 700;
+    color: #1c1b1f;
+}
+
+.containercarrosel{
+    display: flex;
+    flex-direction: row;
+    z-index: 90;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 70%;
+    
+}
+
+
+.containercarrosel2{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 70%;
+    
+}
+
+
+.item2 > img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.item2 > span{
+    color: #8c9ca4;
+    font-size: 16px;
+}
+
+.item2 > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+}
+
+.item2 > div > span {
+    font-size: 14px;
+    color: #8c9ca4;
+    text-decoration: underline 2px #8c9ca4;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    
+}
+
+
+
+@keyframes movimentar {
+    0% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate( var(--posicao), 0);
+    }
+  }
+
+
+
+  @keyframes movimentar2 {
+    0% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate( var(--posicao2), 0);
+    }
+  }
+
+  .containerbutoes{
+      position: absolute;
+      z-index: 2;
+      width: 80%; 
+      margin-top: 4%;
+  }
+
+  .containerbutoes > :first-child {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      height: 100%;
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+      flex-direction: row-reverse;
+
+  }
+
+  .containerbutoes > :first-child > div{
+      background-color: #1c1b1f;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      content: '<';
+      color: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      user-select: none;
+      cursor: pointer;
+  }
+
+  .maincontainer{
+
+      width: 100%;
+  }
+
+
+  .containerbutoes > :first-child > div:active{
+      opacity: 0.5;
+  }
+
+
+  .maincontainer > div:last-child {
+      margin-top: 0px;
+
+  }
+
+  footer{
+      display: flex !important;
+      background-color: #294858 !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+ 
+
+
+  footer > div > span{
+      color: aliceblue !important;
+  }
+
+  footer > div >  a {
+      color: white !important;
+      margin-left: 10px;
+  }
+
+  .containersejabenvindo{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .containersejabenvindo > i {
+      font-size: 24px;
+  }
+
+
+
+
+  .deslogar{
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+  }
+
+
+  .deslogar > span {
+    border-left: 2px solid white;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.navbar-brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-brand > :first-child {
+    color: #d39847;
+    text-decoration: none;
+}
+
+.navbar-brand > .containersejabenvindo{ 
+   margin-left: 5%;
+}
+
+.addlivro{
+    position: absolute;
+    z-index: 5;
+
+}
+
+.addlivro > :first-child {
+    min-width: 10%;
+    height: 30px;
+    background-color: #d39847;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: none;
+}
+
+.item:hover > .addlivro> :first-child {
+    display: flex;
+}
+
+.item:hover > .addlivro> :first-child:active {
+    opacity: 0.5;
+}
+
+
+
+.meio{
+    width: 90% !important;
+
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+
+
+.containerRegistro {
+    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.containerimglogin{
+    display: flex;
+    min-height: 30vh;
+    width: 45%;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerdadoslogin{
+    min-height: 255px;
+    height: 42vh;
+    max-height: 300px;
+    min-width: 300px;
+    width: 60%;
+    max-width: 450px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 2px solid #8c9ca4;
+}
+
+.continerlogoinput{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: 2px solid #1c1b1f;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.continerlogoinput >i {
+   font-size: 24px;
+   width: 10%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.continerlogoinput >input {
+
+    border: none;
+    width: 90%;
+ }
+
+
+ .containerimglogin > img {
+
+    max-height: 300px;
+    margin: -48px;
+
+
+}
+
+
+.containerimglogin > span {
+
+    font-size: 24px;
+    color: #d39847;
+
+}
+
+
+.containerdadoslogin > :first-child {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input:focus-visible{
+    border: none !important;
+    outline-offset: none !important;
+    outline: none !important
+}
+
+
+.btnentrar {
+    width: 40%;
+    height: 40px;
+    background-color: #83949e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+
+}
+
+
+
+.containerdadoslogin >  :last-child  {
+    color: #83949e !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.containerdadoslogin >  :last-child > a {
+        color: #83949e !important;
+        margin-top: 5px;
+        margin-bottom: 5px;
+}
+
+
+.containerdadosregistro {
+    min-height: 380px;
+    height: 42vh;
+    max-height: 300px;
+    min-width: 300px;
+    width: 60%;
+    max-width: 450px;
+    justify-content: center;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 2px solid #8c9ca4;
+}
+
+
+.containerdadosregistro2 {
+    min-height: 380px;
+    height: 42vh;
+    max-height: 300px;
+    min-width: 300px;
+    width: 60%;
+    max-width: 450px;
+    padding-top: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 2px solid #8c9ca4;
+}
+
+
+.containerdadosregistro2 > :first-child {
+    font-size: 24px;
+    color: #294858;
+    font-weight: 700;
+}
+
+
+.containerdadosregistro2 > * {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.containerdadosregistro2 > form > *  {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-select {
+    border:  none !important;
+}
+
+.d-flex{
+    justify-content: center;
+    align-items: center;
+}
+
+
+.d-flex > a{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.d-flex > .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none !important;
+}
+.d-flex > .user > i {
+    font-size: 28px;
+    color: whitesmoke ;
+}
+
+.d-flex > .user > span {
+    padding: 0px !important;
+    color: whitesmoke !important;
+
+}
+
+
+
+.d-flex > .admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none !important;
+}
+.d-flex > .admin > i {
+    font-size: 28px;
+    color: whitesmoke ;
+}
+
+.d-flex > .admin > span {
+    padding: 0px !important;
+    color: whitesmoke !important;
+
+}
+
+
+
+.containeruser{ 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 87vh;
+}
+.containerinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.containerfotoinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.containerfotoinfo > img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.containerinfodetalhe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.containerinfodetalhe > span {
+    font-size: 24px;
+}
+.containerlivros {
+
+    width: 65%;
+    border: 2px solid #8c9ca4;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.livro {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: #1c1b1f solid 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 155px;
+
+}
+
+.livro >img {
+
+    height: 80px;
+    width: 80px;
+}
+
+.livro > span {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.livro > :nth-child(2) {
+    font-size: 16px;
+}
+
+
+.livro > :last-child {
+    text-decoration: solid underline #d39847 2px;
+}
+
+
+.contadmin {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+body{
+    margin: 0px !important;
+}
+
+
+.contadmin > header {
+    background-color: #1c1b1f;
+    width: 100%;
+    min-height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contadmin > header > a {
+    background-color: #1c1b1f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.contadmin > main {
+    width: 100%;
+    min-height: 79vh;
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.contadmin > header > a > img {
+    max-height: 130px;
+}
+
+.contadmin > header > a >  span {
+    font-size: 24px;
+    color: #d39847;
+}
+
+.containerlista_livros {
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerlista_livros > :first-child {
+    border-top: 2px solid #1c1b1f;
+    background-color: white;
+    color: #83949e;
+}
+.containerlista_livros > :first-child  > div{
+
+    color: #83949e;
+}
+
+.listalivro {
+    display: flex;
+    border: 2px solid   #1c1b1f;
+    background-color: #83949e;
+    border-top: none ;
+    flex-direction: row;
+    min-height: 60px;
+    justify-content: space-between;
+}
+
+
+
+.containerlista_livros > :first-child:hover {
+    border-top: 2px solid #1c1b1f;
+    background-color: white;
+    color: #83949e;
+}
+
+
+
+
+.listalivro:hover {
+    background-color: #303037;
+}
+
+
+
+
+
+.listalivro > div {
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: white;
+}
+
+.funclsita {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 1;
+
+}
+
+.funclsita > a {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+.containerfunctionsadmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.containerfunctionsadmin > a {
+
+    height: 40px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #2c2c30;
+    color: #d39847;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.containerfunctionsadmin > a > span{
+    margin-right: 5px;
+}
+
+.containerfunctionsadmin > form > input {
+
+        border: 2px solid #83949e;
+
+
+}
+
+.containerfunctionsadmin > form > input:focus-visible {
+    border: #83949e 2px solid;
+    outline: 2px solid #83949e !important;
+}
+
+.contaddadmin {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 62vh;
+    flex-direction: column;
+}
+
+.form-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.contaddadmin > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contaddadmin > form > button {
+    width: 150px;
+    background-color: #83949e;
+    color: #d39847;
+    margin-top: 30px;
+
+}
+
+
+.containerhome {
+    width: 100%;
+    min-height: 76vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.containerhome > .containerlivros {
+    border: 0px ;
+    width: 100%;
+}
+
+.containererros{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+
+
+}
+
+
+.containererros > :first-child {
+    color: red;
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+.containererros > :last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.containererros > :last-child > :first-child {
+    color: #294858;
+    font-size:  22px;
+    letter-spacing: 2px;
+    text-align: center;
+
+}
+
+
+
+.containererros > :last-child > :last-child {
+    font-size:  36px;
+    margin-top: 10px;
+}
+
+
+#clicka2 {
+    width: 140px !important;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #83949c;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+#clicka2 > span {
+     color: whitesmoke;
+     margin-right: 5px;
+}
+
+#clicka2 > i {
+    color: whitesmoke;
+}
+
+
+#clicka2:active {
+    opacity: 0.8;
+}
+
+.deslogar {
+    color: #294858;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+
+.btnadicionargrupo{
+    background-color: #4f93bd;
+    width: 50%;
+    height: 35px;
+    max-width: 180px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btnadicionargrupo:active{
+    opacity: 0.5;
+}
+
+
+
+.btnadicionargrupo > i {
+    color: white;
+    font-size: 20px;
+    padding-top: 2px;
+}
+
+.btnadicionargrupo > span {
+    color: aliceblue;
+    font-size: 14px;
+}
+
+.containerbtnadicionarmembro {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.containerbtnadicionarmembro > :last-child {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.containerbtnadicionarmembro > :last-child > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.containerbtnadicionarmembro > :last-child > div > .bi-x-lg {
+    color: red;
+}
+
+
+.containerbtnadicionarmembro > :last-child > div > .bi-check-lg {
+    color: green;
+}
+
+.containermsg {
+     /* The image used */
+  background-image: url("../img/fundo_chat2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 55%;
+  height: 60vh;
+}
+
+.containermsg::-webkit-scrollbar {
+    display: none;
+}
+
+.headerchat {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    height: 10%;
+    padding-right: 15px;
+    background-color: #11273b;
+    box-shadow: 1px 1px 1px black;
+
+
+}
+
+.headerchat > :first-child {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.headerchat > :first-child > span {
+        color: white;
+        padding-top: 3px;
+        font-size: 2vh;
+
+}
+
+.headerchat > :last-child > * {
+    color: white;
+    padding-top: 3px;
+    font-size: 0.9rem;
+
+}
+
+.mainmensagens{
+    height: 80%;
+    width: 100%;
+    background-color: #4f93bd;
+    overflow-y:scroll;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+}
+
+.mainmensagens::-webkit-scrollbar {
+    display: none;
+}
+
+.footerchat{
+    height: 10%;
+    width: 100%;
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.footerchat > form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+}
+
+.footerchat > form > input {
+    width: 75%;
+    height: 30px;
 }

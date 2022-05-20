@@ -27,7 +27,7 @@ class GruposControllers {
             const resposta = [];
 
             await Promise.all(
-                rows.map(async (data) => {
+                rows.map(async(data) => {
                     let dataCompleta = data;
                     let consulta_membros = await (
                         await dbcon.query(
@@ -92,11 +92,85 @@ class GruposControllers {
 
     async grupodetalhe(req, res) {
 
-        res.render('grupodetalhe')
+        const { id } = req.params;
+        const parametros = {
+            logado: false,
+            escrever: false,
+            ler: false,
+            grupo: [],
+            usuario: req.session.user,
+            msgs: []
+
+        }
+
+        if (req.session.user) {
+            parametros.logado = true
+            let { rows } = await dbcon.query(`select * from permissaos where id_grupo=${id} and id_user=${req.session.user.id}`)
+            if (rows[0]) {
+                if (rows[0].permissao == 'r') {
+                    parametros.escrever = true;
+                    parametros.ver = true
+                } else {
+                    parametros.ver = true
+                }
+            } else {
+                parametros.logado = false
+            }
+        }
+
+        if (id * 1 != 'NaN') {
+            let rows2 = await dbcon.query(`select * from grupos where id=${id}`)
+            if (rows2.rows[0]) {
+                console.log('entrou aqui')
+                parametros.grupo = rows2.rows[0]
+
+                let rows3 = await dbcon.query(`select mensagem_grupo.*, users.username from mensagem_grupo left join users on users.id = mensagem_grupo.id_user  where id_grupo=${rows2.rows[0].id} order by id_mens desc limit 10`)
+                if (rows3.rows[0]) {
+
+                    parametros.msgs = rows3.rows
+
+
+                } else {
+                    console.log(rows3)
+                }
+
+
+
+
+            }
+
+        }
+
+        res.render('grupodetalhe', {...parametros, id })
+
+    }
+
+
+    async enviarmsg(req, res) {
+
+        if (req.session.user) {
+
+            const { id } = req.session.user
+
+            const { msg, grupo } = req.body
+
+            const { rows } = await dbcon.query(`INSERT INTO mensagem_grupo(mensagem, id_grupo, id_user) VALUES ('${msg.trim()}', ${grupo}, ${id})  RETURNING *`)
+
+            if (rows) {
+                console.log(rows)
+                res.redirect(`/grupos/grupodetalhe/${grupo}`)
+            } else {
+                res.redirect(`/`)
+            }
+
+        } else {
+            res.redirect(`/login.html`)
+        }
 
 
 
     }
+
 
 }
 

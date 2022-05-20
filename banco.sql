@@ -29,7 +29,7 @@ create table Permissaos (
     id serial,
     id_grupo int(20),
     id_user int(20),
-    permissao varchar(1),
+    permissao varchar(1) // l = leitura  r = escrita,
     primary key (id),
     FOREIGN KEY (id_user) REFERENCES Users(id)
     FOREIGN KEY (id_grupo) REFERENCES Grupo(id)

@@ -33,12 +33,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="post" action="/grupos/addmembro">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Email:</label>
                                     <input type="text" class="form-control" id="recipient-name" name="email">
                                 </div>
-
+                                <input type="number" hidden class="form-control" id="recipient-name" name="grupo_id" value="<%= grupo.id %>">
                                 <div class="mb-3">
                                     <label for="recipient-name2" class="col-form-label">Permissão:</label>
                                     <select class="form-select" aria-label="Default select example" id="recipient-name2" name="permissao">
@@ -91,6 +91,15 @@
 
                 <div class="containermsg">
 
+                <% if(ver == false) { %> 
+                    <div class="naovermsg">
+                            
+                        <i class="bi bi-eye-slash"></i>
+                        <span>Você não tem permissão para ver essas mensagens</span>
+                    
+                    </div>
+
+                    <% } %>
                     <div class="headerchat">
 
                         <div title="<%=  grupo != undefined ? grupo.nome : ''  %>"><span>
@@ -101,8 +110,10 @@
 
                     </div>
 
-
+                    <% if(ver == true) { %> 
                     <div class="mainmensagens">
+
+                       
 
                         <% msgs.map(data => {  %>
 
@@ -132,8 +143,10 @@
 
                             </div>
 
+                            <% } %>
 
 
+                            <% if(ver == true && escrever == true) { %> 
 
                             <div class="footerchat">
 
@@ -151,6 +164,8 @@
                                 </form>
 
                             </div>
+
+                            <% } %>
 
 
 

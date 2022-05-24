@@ -96,7 +96,7 @@ class GruposControllers {
         const parametros = {
             logado: false,
             escrever: false,
-            ler: false,
+            ver: false,
             grupo: [],
             usuario: req.session.user,
             msgs: []
@@ -140,6 +140,7 @@ class GruposControllers {
             }
 
         }
+        console.log(parametros.ver, parametros.escrever, )
 
         res.render('grupodetalhe', {...parametros, id })
 
@@ -168,6 +169,40 @@ class GruposControllers {
         }
 
 
+
+    }
+
+
+    async adicionarmembro(req, res) {
+
+        const erros = []
+
+        const {permissao, email} = req.body
+
+        if (req.session.user) {
+
+            const { id } = req.session.user
+
+            const { msg, grupo } = req.body
+
+            const { rows } = await dbcon.query(`INSERT INTO mensagem_grupo(mensagem, id_grupo, id_user) VALUES ('${msg.trim()}', ${grupo}, ${id})  RETURNING *`)
+
+            if (rows) {
+                console.log(rows)
+                res.redirect(`/grupos/grupodetalhe/${grupo}`)
+            } else {
+                res.redirect(`/`)
+            }
+
+        } else {
+           
+            erros.push('usuario nao logado')
+            res.render("erro", { processo: "adicionar membro", erros: erros });
+
+        }
+        
+
+        
 
     }
 

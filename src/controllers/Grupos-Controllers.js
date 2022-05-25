@@ -27,7 +27,7 @@ class GruposControllers {
             const resposta = [];
 
             await Promise.all(
-                rows.map(async(data) => {
+                rows.map(async (data) => {
                     let dataCompleta = data;
                     let consulta_membros = await (
                         await dbcon.query(
@@ -140,9 +140,9 @@ class GruposControllers {
             }
 
         }
-        console.log(parametros.ver, parametros.escrever, )
+        console.log(parametros.ver, parametros.escrever,)
 
-        res.render('grupodetalhe', {...parametros, id })
+        res.render('grupodetalhe', { ...parametros, id })
 
     }
 
@@ -177,32 +177,46 @@ class GruposControllers {
 
         const erros = []
 
-        const {permissao, email} = req.body
+        const { permissao, email, grupo_id } = req.body
 
         if (req.session.user) {
 
             const { id } = req.session.user
 
-            const { msg, grupo } = req.body
-
-            const { rows } = await dbcon.query(`INSERT INTO mensagem_grupo(mensagem, id_grupo, id_user) VALUES ('${msg.trim()}', ${grupo}, ${id})  RETURNING *`)
-
+            const { rows } = await dbcon.query(`select * from grupos where id = ${grupo_id}`)
             if (rows) {
-                console.log(rows)
-                res.redirect(`/grupos/grupodetalhe/${grupo}`)
+
+                if (rows.owner == id) {
+
+                    
+
+                } else {
+
+                    erros.push('Usuario não é dono deste grupo')
+
+                    res.render("erro", { processo: "adicionar membro", erros: erros });
+
+                }
+
+
+
             } else {
-                res.redirect(`/`)
+
+                erros.push('Falha ao conectar com o banco')
+
+                res.render("erro", { processo: "adicionar membro", erros: erros });
             }
 
         } else {
-           
+
             erros.push('usuario nao logado')
+
             res.render("erro", { processo: "adicionar membro", erros: erros });
 
         }
-        
 
-        
+
+
 
     }
 

@@ -27,7 +27,7 @@ class GruposControllers {
             const resposta = [];
 
             await Promise.all(
-                rows.map(async (data) => {
+                rows.map(async(data) => {
                     let dataCompleta = data;
                     let consulta_membros = await (
                         await dbcon.query(
@@ -99,13 +99,17 @@ class GruposControllers {
             ver: false,
             grupo: [],
             usuario: req.session.user,
-            msgs: []
+            msgs: [],
+            quantidademsg: 0,
+            page: 1
 
         }
 
         if (req.session.user) {
             parametros.logado = true
+            console.log(`select * from permissaos where id_grupo=${id} and id_user=${req.session.user.id}`)
             let { rows } = await dbcon.query(`select * from permissaos where id_grupo=${id} and id_user=${req.session.user.id}`)
+            console.log(rows)
             if (rows[0]) {
                 if (rows[0].permissao == 'r') {
                     parametros.escrever = true;
@@ -127,6 +131,8 @@ class GruposControllers {
                 let rows3 = await dbcon.query(`select mensagem_grupo.*, users.username from mensagem_grupo left join users on users.id = mensagem_grupo.id_user  where id_grupo=${rows2.rows[0].id} order by id_mens desc limit 10`)
                 if (rows3.rows[0]) {
 
+                    let countmsg = await (await dbcon.query(`select count(*) as quantidade from mensagem_grupo left join users on users.id = mensagem_grupo.id_user  where id_grupo=${rows2.rows[0].id}`)).rows
+                    parametros.quantidademsg = countmsg[0].quantidade
                     parametros.msgs = rows3.rows
 
 
@@ -140,9 +146,9 @@ class GruposControllers {
             }
 
         }
-        console.log(parametros.ver, parametros.escrever,)
+        console.log(parametros.ver, parametros.escrever, parametros.quantidademsg)
 
-        res.render('grupodetalhe', { ...parametros, id })
+        res.render('grupodetalhe', {...parametros, id })
 
     }
 
@@ -179,16 +185,50 @@ class GruposControllers {
 
         const { permissao, email, grupo_id } = req.body
 
+
+
+
         if (req.session.user) {
 
             const { id } = req.session.user
 
+            if (req.session.user.email == email) {
+                erros.push('Não é possivel adicionar voce mesmo ao grupo')
+
+                res.render("erro", { processo: "adicionar membro", erros: erros });
+            }
+
             const { rows } = await dbcon.query(`select * from grupos where id = ${grupo_id}`)
             if (rows) {
 
-                if (rows.owner == id) {
+                if (rows[0].owner == id) {
 
-                    
+                    const usuario = await (await dbcon.query(`select * from users where email='${email}'`)).rows
+
+                    if (usuario[0] == undefined) {
+                        erros.push('Usuario com esse email não encontrado')
+
+                        res.render("erro", { processo: "adicionar membro", erros: erros });
+                    } else {
+
+                        let result2 = await dbcon.query(
+                            `INSERT INTO Permissaos (id_grupo, id_user, permissao) VALUES (${grupo_id},${usuario[0].id}, '${permissao}' ) RETURNING *`
+                        );
+
+                        if (result2.rows[0] == undefined) {
+
+                            erros.push('Erro ao adicionar a permissao por favor tente novamente')
+
+                            res.render("erro", { processo: "adicionar membro", erros: erros });
+
+                        } else {
+
+                            res.redirect(`/grupos/grupodetalhe/${grupo_id}`)
+
+                        }
+
+                    }
+
 
                 } else {
 
@@ -219,6 +259,74 @@ class GruposControllers {
 
 
     }
+
+
+    async grupodetalhe2(req, res) {
+
+        const { pagina } = req.body
+
+        console.log(pagina)
+
+        const { id } = req.params;
+        const parametros = {
+            logado: false,
+            escrever: false,
+            ver: false,
+            grupo: [],
+            usuario: req.session.user,
+            msgs: [],
+            quantidademsg: 0,
+            page: 1,
+        }
+
+        if (req.session.user) {
+            parametros.logado = true
+            console.log(`select * from permissaos where id_grupo=${id} and id_user=${req.session.user.id}`)
+            let { rows } = await dbcon.query(`select * from permissaos where id_grupo=${id} and id_user=${req.session.user.id}`)
+            console.log(rows)
+            if (rows[0]) {
+                if (rows[0].permissao == 'r') {
+                    parametros.escrever = true;
+                    parametros.ver = true
+                } else {
+                    parametros.ver = true
+                }
+            } else {
+                parametros.logado = false
+            }
+        }
+
+        if (id * 1 != 'NaN') {
+            let rows2 = await dbcon.query(`select * from grupos where id=${id}`)
+            if (rows2.rows[0]) {
+                console.log('entrou aqui')
+                parametros.grupo = rows2.rows[0]
+                let paginacao = pagina * 10;
+                let rows3 = await dbcon.query(`select mensagem_grupo.*, users.username from mensagem_grupo left join users on users.id = mensagem_grupo.id_user  where id_grupo=${rows2.rows[0].id} order by id_mens desc limit ${paginacao}`)
+                if (rows3.rows[0]) {
+
+                    let countmsg = await (await dbcon.query(`select count(*) as quantidade from mensagem_grupo left join users on users.id = mensagem_grupo.id_user  where id_grupo=${rows2.rows[0].id}`)).rows
+                    parametros.quantidademsg = countmsg[0].quantidade
+                    parametros.page = paginacao
+                    parametros.msgs = rows3.rows
+
+
+                } else {
+                    console.log(rows3)
+                }
+
+
+
+
+            }
+
+        }
+        console.log(parametros.ver, parametros.escrever, parametros.quantidademsg, parametros.page)
+
+        res.render('grupodetalhe', {...parametros, id })
+
+    }
+
 
 
 }

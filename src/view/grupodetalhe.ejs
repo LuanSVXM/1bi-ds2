@@ -91,41 +91,41 @@
 
                 <div class="containermsg">
 
-                <% if(ver == false) { %> 
-                    <div class="naovermsg">
-                            
-                        <i class="bi bi-eye-slash"></i>
-                        <span>Você não tem permissão para ver essas mensagens</span>
-                    
-                    </div>
+                    <% if(ver == false) { %>
+                        <div class="naovermsg">
 
-                    <% } %>
-                    <div class="headerchat">
+                            <i class="bi bi-eye-slash"></i>
+                            <span>Você não tem permissão para ver essas mensagens</span>
 
-                        <div title="<%=  grupo != undefined ? grupo.nome : ''  %>"><span>
+                        </div>
+
+                        <% } %>
+                            <div class="headerchat">
+
+                                <div title="<%=  grupo != undefined ? grupo.nome : ''  %>"><span>
                                 <%= grupo !=undefined ? grupo.nome : '' %>
                             </span></div>
 
-                        <div title="Sair do Grupo"><i class="bi bi-x-lg"></i></div>
+                                <div title="Sair do Grupo"><i class="bi bi-x-lg"></i></div>
 
-                    </div>
+                            </div>
 
-                    <% if(ver == true) { %> 
-                    <div class="mainmensagens">
+                            <% if(ver == true) { %>
+                                <div class="mainmensagens">
 
-                       
 
-                        <% msgs.map(data => {  %>
 
-                            <div class="contmsg">
+                                    <% msgs.map(data => {  %>
 
-                                <div>
-                                    <span><%=data.mensagem%></span>
-                                </div>
+                                        <div class="contmsg <%= usuario.id == data.id_user ? 'direita' : 'esquerda' %> ">
 
-                                <div title="<%= data.username %>">
+                                            <div>
+                                                <span><%=data.mensagem%></span>
+                                            </div>
 
-                                    <span> <%= data.username[0].toUpperCase() %> </div>
+                                            <div title="<%= data.username %>">
+
+                                                <span> <%= data.username[0].toUpperCase() %> </div>
 
 
                                 </div>
@@ -139,6 +139,27 @@
 
 
                                 <% }) %>
+
+                                     <% if(quantidademsg > (page*10) ) { %>
+
+                                        <div class="vermais">
+
+                                            <form action="/grupos/grupodetalhe/<%= grupo.id %>" method="post">
+
+                                                <input type='number' hidden value="<%= page+1 %>" name="pagina"/>
+
+                                                <button type="submit">
+                                                    Ver mais ...
+                                                </button>
+
+
+                                            </form>
+
+                                        </div>
+
+
+
+                                        <% } %>
 
 
                             </div>
@@ -181,22 +202,21 @@
 
 
 
-
     </main>
 
     <footer>
         <div>
             <span> Criado por </span>
 
-                                    <a href="http://github.com/luansvxm" target="_blank">@LuanSVXM</a>
+                                                <a href="http://github.com/luansvxm" target="_blank">@LuanSVXM</a>
 
-                                    <span> & </span>
+                                                <span> & </span>
 
-                                    <a href="http://github.com/juliaebert2903" target="_blank">@JuliaEbert</a>
-                                </div>
-                                </footer>
+                                                <a href="http://github.com/juliaebert2903" target="_blank">@JuliaEbert</a>
+                                            </div>
+                                            </footer>
 
-                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+                                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
 </html>

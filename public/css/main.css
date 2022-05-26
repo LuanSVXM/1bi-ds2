@@ -1033,6 +1033,26 @@ body {
     opacity: 0.5;
 }
 
+.btnadicionargrupo2 {
+    background-color: #4f93bd;
+    border: none !important;
+    width: 70%;
+    height: 35px;
+    max-width: 220px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btnadicionargrupo2:active {
+    opacity: 0.5;
+}
+
 .btnadicionargrupo>i {
     color: white;
     font-size: 20px;
@@ -1040,6 +1060,17 @@ body {
 }
 
 .btnadicionargrupo>span {
+    color: aliceblue;
+    font-size: 14px;
+}
+
+.btnadicionargrupo2>i {
+    color: white;
+    font-size: 20px;
+    padding-top: 2px;
+}
+
+.btnadicionargrupo2>span {
     color: aliceblue;
     font-size: 14px;
 }
@@ -1194,12 +1225,12 @@ body {
     margin-bottom: 10px;
 }
 
-.mainmensagens> :nth-child(2n) {
+.mainmensagens>.esquerda {
     justify-content: flex-end;
     flex-direction: row-reverse;
 }
 
-.mainmensagens> :nth-child(2n-1) {
+.mainmensagens>.direita {
     justify-content: flex-end;
 }
 
@@ -1253,12 +1284,25 @@ body {
     align-items: center;
 }
 
-.naovermsg > span {
+.naovermsg>span {
     margin-top: 10px;
     font-size: 1.2rem;
-
 }
 
-.naovermsg > i {
+.naovermsg>i {
     font-size: 1.7rem;
+}
+
+.vermais {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vermais>form>button {
+    width: 100px !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fce1bc;
 }
